@@ -134,60 +134,46 @@
     </div>
   </div>
 </section>
+
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
-        Diffusion models demonstrate excellent performance in image generation and synthesis. 
-Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research. 
-However, existing unsupervised exploration methods like NoiseCLR~\cite{dalva2024noiseclr} often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.
-To address this, we propose \texttt{UDT} (\textbf{U}nsupervised \textbf{D}iscovery of \textbf{T}ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner. 
-\texttt{UDT} leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance. 
-This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.
-Experiments on dog, cat, bird, and flower datasets demonstrate that \texttt{UDT}'s  performance over existing methods in generating coherent, diverse, and semantically accurate edits. 
-These results suggest \texttt{UDT} is a scalable and effective approach for semantic latent space exploration in diffusion models.
-
         <div class="content has-text-justified">
           <p>
+            Diffusion models demonstrate excellent performance in image generation and synthesis. 
+            Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research. 
+            However, existing unsupervised exploration methods like NoiseCLR often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.
+            To address this, we propose <code>UDT</code> (<b>U</b>nsupervised <b>D</b>iscovery of <b>T</b>ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner. 
+            <code>UDT</code> leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance. 
+            This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.
+            Experiments on dog, cat, bird, and flower datasets demonstrate that <code>UDT</code>'s  performance over existing methods in generating coherent, diverse, and semantically accurate edits. 
+            These results suggest <code>UDT</code> is a scalable and effective approach for semantic latent space exploration in diffusion models.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
+      <div>
        <div class="item">
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
+        <img src="static/images/figure2_v2.2.jpg" alt="method_figure"/>
         <h2 class="subtitle has-text-centered">
-          First image description.
+          <p>
+            The core of the framework is the decomposition of the predicted noise based on a parent class prompt $p$ (e.g. dog), a process that isolates class-specific signal $\Delta \mathcal{T}_k^n$ from the general parent-class attributes $\Delta \mathcal{P}_k^n$. The contrastive learning process then operates on these isolated $\Delta \mathcal{T}_k^n$ vectors. As illustrated in (a) and (b), the framework attracts positive pairs by pulling together $\Delta \mathcal{T}_k^n$ vectors that originate from different images but correspond to the same learnable direction (e.g., $c_1$ or $c_k$). Conversely, (c) shows the repulsion of negative pairs, where $\Delta \mathcal{T}_k^n$ vectors from the same source image but associated with different directions (e.g., $c_1$ or $c_k$) are pushed apart. This allows the framework to discover specific and consistent directions, such as $c_1$ for the ``Bull Mastiff'' and $c_k$ for ``Golden Retriever''.
+          </p>
         </h2>
       </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
       </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
   </div>
 </div>
-</div>
 </section>
+
 <section class="hero is-small is-light">
   <div class="hero-body">
     <div class="container">
