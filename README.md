@@ -1,53 +1,29 @@
-# Academic Project Page Template
-This is an academic paper project page template.
+# UDT: Unsupervised Discovery of Transformations between Fine-Grained Classes in Diffusion Models
 
+This repository contains the project page for **UDT**, accepted at **BMVC 2025**.  
 
-Example project pages built using this template are:
-- https://horwitz.ai/probex
-- https://vision.huji.ac.il/probegen
-- https://horwitz.ai/mother
-- https://horwitz.ai/spectral_detuning
-- https://vision.huji.ac.il/ladeda
-- https://vision.huji.ac.il/dsire
-- https://horwitz.ai/podd
-- https://dreamix-video-editing.github.io
-- https://horwitz.ai/conffusion
-- https://horwitz.ai/3d_ads/
-- https://vision.huji.ac.il/ssrl_ad
-- https://vision.huji.ac.il/deepsim
+---
 
+## 🔗 Project Page
 
+The project page is implemented in static HTML/CSS/JS and can be deployed on GitHub Pages or any static web server.
 
-## Start using the template
-To start using the template click on `Use this Template`.
+- **Demo Website**: [URL OF THE WEBSITE](#)  
+- **Paper (arXiv PDF)**: [Link](https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf)  
+- **Supplementary Material**: [PDF](static/pdfs/supplementary_material.pdf)  
 
-The template uses html for controlling the content and css for controlling the style. 
-To edit the websites contents edit the `index.html` file. It contains different HTML "building blocks", use whichever ones you need and comment out the rest.  
+---
 
-**IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
+## 📑 Abstract
 
-## Components
-- Teaser video
-- Images Carousel
-- Youtube embedding
-- Video Carousel
-- PDF Poster
-- Bibtex citation
+Diffusion models demonstrate excellent performance in image generation and synthesis.  
+Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research.  However, existing unsupervised exploration methods like NoiseCLR often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.  
 
-## Tips:
-- The `index.html` file contains comments instructing you what to replace, you should follow these comments.
-- The `meta` tags in the `index.html` file are used to provide metadata about your paper 
-(e.g. helping search engine index the website, showing a preview image when sharing the website, etc.)
-- The resolution of images and videos can usually be around 1920-2048, there rarely a need for better resolution that take longer to load. 
-- All the images and videos you use should be compressed to allow for fast loading of the website (and thus better indexing by search engines). For images, you can use [TinyPNG](https://tinypng.com), for videos you can need to find the tradeoff between size and quality.
-- When using large video files (larger than 10MB), it's better to use youtube for hosting the video as serving the video from the website can take time.
-- Using a tracker can help you analyze the traffic and see where users came from. [statcounter](https://statcounter.com) is a free, easy to use tracker that takes under 5 minutes to set up. 
-- This project page can also be made into a github pages website.
-- Replace the favicon to one of your choosing (the default one is of the Hebrew University). 
-- Suggestions, improvements and comments are welcome, simply open an issue or contact me. You can find my contact information at [https://horwitz.ai](https://horwitz.ai)
+To address this, we propose **UDT** (**U**nsupervised **D**iscovery of **T**ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner.  
 
-## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
+UDT leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance.  This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.  
 
-## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+Experiments on dog, cat, bird, and flower datasets demonstrate that **UDT** outperforms existing methods in generating coherent, diverse, and semantically accurate edits.  These results suggest **UDT** is a scalable and effective approach for semantic latent space exploration in diffusion models.
+
+---
+
