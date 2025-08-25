@@ -54,10 +54,10 @@
                 <span class="author-block">
                   <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Hyunseo Koh</a><sup >*</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Hojae Jeong</a><sup >*</sup>,</span>,
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Hojae Jeong</a><sup >*</sup>,</span>
                   </span>
                    <span class="author-block">
-                    <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank">Byungkwan Chae</a><sup >*</sup>,</span>,
+                    <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank">Byungkwan Chae</a><sup >*</sup>,</span>
                   </span>
                    <span class="author-block">
                     <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank">Sungyong Park</a>,
@@ -69,7 +69,7 @@
 
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">Soongsil University, Seoul, South Korea <br>BMVC 2025</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution <sup>†</sup>Indicates Corresponding author [cite: 31]</small></span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution <sup>†</sup>Indicates Corresponding author</small></span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -94,7 +94,7 @@
                     </a>
                   </span>
 
-                  <span class="link-block">
+                  <!-- <span class="link-block">
                     <a href="https://github.com/YOUR REPO HERE" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -102,7 +102,7 @@
                     </span>
                     <span>Code</span>
                   </a>
-                </span>
+                </span> -->
 
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
@@ -139,6 +139,15 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
+        Diffusion models demonstrate excellent performance in image generation and synthesis. 
+Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research. 
+However, existing unsupervised exploration methods like NoiseCLR~\cite{dalva2024noiseclr} often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.
+To address this, we propose \texttt{UDT} (\textbf{U}nsupervised \textbf{D}iscovery of \textbf{T}ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner. 
+\texttt{UDT} leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance. 
+This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.
+Experiments on dog, cat, bird, and flower datasets demonstrate that \texttt{UDT}'s  performance over existing methods in generating coherent, diverse, and semantically accurate edits. 
+These results suggest \texttt{UDT} is a scalable and effective approach for semantic latent space exploration in diffusion models.
+
         <div class="content has-text-justified">
           <p>
           </p>
