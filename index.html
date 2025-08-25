@@ -123,18 +123,34 @@
 </section>
 
 
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">TL;DR</h2>
+        <div class="content has-text-justified">
+          <p>
+            TO DO XXXX.
+          
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+      <h2 class="title is-3">Motivation</h2>
+      <img src="static/images/figure1.jpg" alt="Motivation Figure" />
       <h2 class="subtitle has-text-centered">
+        
       </h2>
     </div>
   </div>
 </section>
+
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
@@ -163,18 +179,16 @@
     <div class="container">
       <h2 class="title is-3 has-text-centered">Method</h2>
       
-      <div>
-       <div class="item">
+      <div class="item">
         <img src="static/images/figure2_v2.2.jpg" alt="method_figure"/>
-        <h2 class="subtitle has-text-centered">
+        <div class="content has-text-justified">
           <p>
-            The core of the framework is the decomposition of the predicted noise based on a parent class prompt $p$ (e.g. dog), a process that isolates class-specific signal $\Delta \mathcal{T}_k^n$ from the general parent-class attributes $\Delta \mathcal{P}_k^n$. The contrastive learning process then operates on these isolated $\Delta \mathcal{T}_k^n$ vectors. As illustrated in (a) and (b), the framework attracts positive pairs by pulling together $\Delta \mathcal{T}_k^n$ vectors that originate from different images but correspond to the same learnable direction (e.g., $c_1$ or $c_k$). Conversely, (c) shows the repulsion of negative pairs, where $\Delta \mathcal{T}_k^n$ vectors from the same source image but associated with different directions (e.g., $c_1$ or $c_k$) are pushed apart. This allows the framework to discover specific and consistent directions, such as $c_1$ for the ``Bull Mastiff'' and $c_k$ for ``Golden Retriever''.
+            The core of the framework is the decomposition of the predicted noise based on a parent class prompt $p$ (e.g. dog), a process that isolates class-specific signal $\Delta \mathcal{T}_k^n$ from the general parent-class attributes $\Delta \mathcal{P}_k^n$. The contrastive learning process then operates on these isolated $\Delta \mathcal{T}_k^n$ vectors. As illustrated in (a) and (b), the framework attracts positive pairs by pulling together $\Delta \mathcal{T}_k^n$ vectors that originate from different images but correspond to the same learnable direction (e.g., $c_1$ or $c_k$). Conversely, (c) shows the repulsion of negative pairs, where $\Delta \mathcal{T}_k^n$ vectors from the same source image but associated with different directions (e.g., $c_1$ or $c_k$) are pushed apart. This allows the framework to discover specific and consistent directions, such as $c_1$ for the "Bull Mastiff" and $c_k$ for "Golden Retriever".
           </p>
-        </h2>
+        </div>
       </div>
-      </div>
+    </div>
   </div>
-</div>
 </section>
 
 <section class="hero is-small is-light">
