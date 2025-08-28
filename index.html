@@ -202,11 +202,10 @@
           <img src="static/images/figure2_v2.2.jpg" alt="method_figure"/>
           <div class="content has-text-justified">
             <p>
-              The core of the framework is the decomposition of the predicted noise based on a parent class prompt $p$ (e.g. dog), a process that isolates class-specific signal $\Delta \mathcal{T}_k^n$ from the general parent-class attributes $\Delta \mathcal{P}_k^n$.
-              The contrastive learning process then operates on these isolated $\Delta \mathcal{T}_k^n$ vectors.
-              As illustrated in (a) and (b), the framework attracts positive pairs by pulling together $\Delta \mathcal{T}_k^n$ vectors that originate from different images but correspond to the same learnable direction (e.g., $c_1$ or $c_k$).
-              Conversely, (c) shows the repulsion of negative pairs, where $\Delta \mathcal{T}_k^n$ vectors from the same source image but associated with different directions (e.g., $c_1$ or $c_k$) are pushed apart.
-              This allows the framework to discover specific and consistent directions, such as $c_1$ for the "Bull Mastiff" and $c_k$ for "Golden Retriever".
+              Directly exploring the predicted noise space using the total divergence, $\Delta \epsilon_k^n$, is insufficient for discovering breed-to-breed transformation directions. 
+    To address this, \texttt{UDT} addresses this by first decomposing this divergence, as illustrated in (a), to isolate the class-specific direction $\Delta\mathcal{T}_k^n$ from the more general parent-class attributes $\Delta\mathcal{P}_k^n$. 
+    The contrastive learning stage, shown in (b) and (c), then operates exclusively on the directions $\Delta\mathcal{T}_k^n$ . 
+    This focused approach allows the framework to discover specific and consistent directions, such as $\boldsymbol{c}_1$ for ``Bullmastiff'' and $\boldsymbol{c}_K$ for ``Golden Retriever,'' which are then used to perform the final image translations.
             </p>
           </div>
         </div>
