@@ -8,22 +8,14 @@ This repository contains the project page for **UDT**, accepted at **BMVC 2025**
 
 The project page is implemented in static HTML/CSS/JS and can be deployed on GitHub Pages or any static web server.
 
-- **Demo Website**: [URL OF THE WEBSITE](#)  
-- **Paper (arXiv PDF)**: [Link](https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf)  
-- **Supplementary Material**: [PDF](static/pdfs/supplementary_material.pdf)  
+- **Project Website**: [https://ssu-reality-lab.github.io/UDT/](#)  
+- **Paper (arXiv PDF)**: [PDF](static/pdfs/UDT_BMVC_2025.pdf) 
+- **Supplementary Material**: [PDF](static/pdfs/UDT_BMVC_2025_SUPP.pdf)  
 
 ---
 
 ## 📑 Abstract
-
-Diffusion models demonstrate excellent performance in image generation and synthesis.  
-Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research.  However, existing unsupervised exploration methods like NoiseCLR often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.  
-
-To address this, we propose **UDT** (**U**nsupervised **D**iscovery of **T**ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner.  
-
-UDT leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance.  This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.  
-
-Experiments on dog, cat, bird, and flower datasets demonstrate that **UDT** outperforms existing methods in generating coherent, diverse, and semantically accurate edits.  These results suggest **UDT** is a scalable and effective approach for semantic latent space exploration in diffusion models.
+Diffusion models achieve impressive image synthesis, yet unsupervised methods for latent space exploration remain limited in fine-grained class translation. Existing approaches struggle with fine-grained class translation, often producing low-diversity outputs within parent classes or inconsistent child-class mappings across images.  We propose `UDT` (**U**nsupervised **D**iscovery of **T**ransformations), a framework that incorporates hierarchical structure into unsupervised direction discovery. `UDT` leverages parent-class prompts to decompose predicted noise into class-general and class-specific components, ensuring translations remain within the parent domain while enabling disentangled child-class transformations. A hierarchy-aware contrastive loss further enforces consistency, with each direction corresponding to a distinct child class. Experiments on dogs, cats, birds, and flowers show that `UDT` outperforms state-of-the-art methods both qualitatively and quantitatively.  Moreover, `UDT` supports controllable interpolation, allowing for the smooth generation of intermediate classes (*e.g.*, mixed breeds). These results demonstrate `UDT` as a general and effective solution for fine-grained image translation. 
 
 ---
 
