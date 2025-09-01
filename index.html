@@ -102,14 +102,14 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <span class="link-block">
-                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <a href="static/pdfs/UDT_BMVC_2025.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Paper</span>
                   </a>
                 </span>
 
                 <span class="link-block">
-                  <a href="static/pdfs/supplementary_material.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <a href="static/pdfs/UDT_BMVC_2025_SUPP.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
                     <span>Supplementary</span>
                   </a>
@@ -146,7 +146,7 @@
           <h2 class="title is-3">TL;DR</h2>
           <div class="content has-text-justified">
             <p>
-              UDT is an unsupervised framework that uses parent-class guided noise decomposition to achieve breed-to-breed translation across diverse domains like dogs, cats, flowers, and birds.
+              UDT is an unsupervised framework that uses parent-class guided noise decomposition to achieve breed-to-breed translation directions across diverse domains like dogs, cats, flowers, and birds.
             </p>
           </div>
         </div>
@@ -161,14 +161,9 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Diffusion models demonstrate excellent performance in image generation and synthesis.
-              Effective and controllable editing with these models requires a deep understanding of their latent spaces, a primary focus of prior research.
-              However, existing unsupervised exploration methods like NoiseCLR often remain at attribute-level edits, revealing limitations in complex fine-grained class transformations.
-              To address this, we propose <code>UDT</code> (<b>U</b>nsupervised <b>D</b>iscovery of <b>T</b>ransformations), a novel framework that, while operating in a fully unsupervised setting, supports fine-grained class transformations by structuring the latent space in a hierarchy-aware manner.
-              <code>UDT</code> leverages hierarchy-informed contrastive learning to disentangle class-defining traits using parent class guidance.
-              This systematic approach structures the latent space to support diverse and meaningful transformations while ensuring semantic consistency and pose preservation.
-              Experiments on dog, cat, bird, and flower datasets demonstrate that <code>UDT</code>'s performance over existing methods in generating coherent, diverse, and semantically accurate edits.
-              These results suggest <code>UDT</code> is a scalable and effective approach for semantic latent space exploration in diffusion models.
+              Diffusion models achieve impressive image synthesis, yet unsupervised methods for latent space exploration remain limited in fine-grained class translation. Existing approaches struggle with fine-grained class translation, often producing low-diversity outputs within parent classes or inconsistent child-class mappings across images.
+              We propose <code>UDT</code> (<b>U</b>nsupervised <b>D</b>iscovery of <b>T</b>ransformations), a framework that incorporates hierarchical structure into unsupervised direction discovery. <code>UDT</code> leverages parent-class prompts to decompose predicted noise into class-general and class-specific components, ensuring translations remain within the parent domain while enabling disentangled child-class transformations. A hierarchy-aware contrastive loss further enforces consistency, with each direction corresponding to a distinct child class.
+              Experiments on dogs, cats, birds, and flowers show that <code>UDT</code> outperforms state-of-the-art methods both qualitatively and quantitatively. Moreover, <code>UDT</code> supports controllable interpolation, allowing for the smooth generation of intermediate classes (<i>e.g.</i>, mixed breeds). These results demonstrate <code>UDT</code> as a general and effective solution for fine-grained image translation.
             </p>
           </div>
         </div>
@@ -181,10 +176,14 @@
       <div class="hero-body">
         <h2 class="title is-3 has-text-centered">Motivation</h2>
         <div class="item">
-          <img src="static/images/figure1.jpg" alt="Motivation Figure" />
+          <img src="static/images/intro.png" alt="Motivation Figure" />
           <div class="content has-text-justified">
             <p>
-              Existing unsupervised exploration methods, like NoiseCLR, struggle with fine-grained classes such as specific dog breeds. These approaches often remain at attribute-level edits, offering limited control over detailed visual attributes. For example, transformations using NoiseCLR frequently result in outcomes unrelated to the intended target or lead to only minor changes, such as a slight adjustment in fur color.
+              Recent unsupervised approaches for diffusion models attempt to discover semantic directions by exploring intermediate features of the U-Net or operating in the predicted noise space. 
+              However, despite these advances, unsupervised methods face notable shortcomings when applied to fine-grained class translation.
+              First, the diversity of generated outputs is insufficient; discovered directions often tend to generate only low-diversity variations within a parent class (e.g., different types of dog) or drift into unrelated classes (e.g., cat, food). 
+              Second, discovered directions lack consistency across images: the same direction may corre spond todifferent child classes depending on the input, requiring users to search for a desirable transformation manually.
+              These limitations limit their applicability in scenarios that require reliable, fine-grained control, such as breed-to-breed transformations
             </p>
           </div>
         </div>
@@ -199,13 +198,10 @@
         <h2 class="title is-3 has-text-centered">Method</h2>
 
         <div class="item">
-          <img src="static/images/figure2_v2.2.jpg" alt="method_figure"/>
+          <img src="static/images/method.png" alt="method_figure"/>
           <div class="content has-text-justified">
             <p>
-              Directly exploring the predicted noise space using the total divergence, $\Delta \epsilon_k^n$, is insufficient for discovering breed-to-breed transformation directions. 
-    To address this, UDT addresses this by first decomposing this divergence, as illustrated in (a), to isolate the class-specific direction $\Delta\mathcal{T}_k^n$ from the more general parent-class attributes $\Delta\mathcal{P}_k^n$. 
-    The contrastive learning stage, shown in (b) and (c), then operates exclusively on the directions $\Delta\mathcal{T}_k^n$ . 
-    This focused approach allows the framework to discover specific and consistent directions, such as $\boldsymbol{c}_1$ for ``Bullmastiff'' and $\boldsymbol{c}_K$ for ``Golden Retriever,'' which are then used to perform the final image translations.
+              <b>Overview of the <code>UDT</code> framework.</b> (a) <code>UDT</code> decomposes predicted noise divergence $\Delta\epsilon_k^n$ into a parent-class component $\Delta\mathcal{P}_k^n$ (general attributes) and a child-class component $\Delta\mathcal{T}_k^n$ (fine-grained traits). (b) Contrastive learning is then applied only to the child-class vectors, ensuring each discovered direction corresponds to a consistent child class. This hierarchical formulation enables <code>UDT</code> to discover interpretable directions for fine-grained class translation, later used in the image translation pipeline (c).
             </p>
           </div>
         </div>
@@ -218,11 +214,14 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Quality Results of UDT</h2>
-          <img src="static/images/figure3.jpg" alt="method_figure"/>
+          <h2 class="title is-3">Visualizing discovered transformations by UDT</h2>
+          <img src="static/images/variousdomain.png" alt="method_figure"/>
           <div class="content has-text-justified">
             <p>
-              UDT discovers diverse and interpretable transformation directions within a single category and effectively generalizes this capability across various fine-grained domains such as dogs, cats, birds, and flowers. For instance, specific directions can transform a dog's breed into a Bulldog or a Golden Retriever with their distinct features, while others can accurately modify detailed attributes like a cat's fur color or a bird's plumage.
+              <code>UDT</code> discovers semantically distinct and interpretable transformation directions across diverse domains, including animals, flowers, and human faces. 
+              For instance, in the dog domain, it successfully discovers numerous distinct breed transformations, producing the characteristic wrinkled faces of a <em>Bulldog</em> or the flowing golden coats of a <em>Golden Retriever</em>. 
+              Similar capabilities are observed in other categories; <code>UDT</code> accurately alters breed-defining traits in cats, such as fur color and ear length, and for human faces, it can produce either <em></em>Asian</em> or more <em></em>Western</em> facial features.
+              These results demonstrate <code>UDT</code>'s capability to discover semantically meaningful features and identify distinctive visual variations within each domain without any explicit labels during training.
             </p>
           </div>
         </div>
@@ -235,10 +234,50 @@
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Qualitative Comparison</h2>
-          <img src="static/images/figure5_v2.jpg" alt="Qualitative comparison with other methods"/>
+          <img src="static/images/comparison_others.png" alt="Qualitative comparison with other methods"/>
           <div class="content has-text-justified">
             <p>
-              UDT demonstrates clear advantages in qualitative comparisons against recent methods. Unsupervised approaches like NoiseCLR and Concept Discovery often fail to find accurate transformation directions for specific dog breeds, a task where UDT consistently succeeds. Furthermore, UDT's performance is competitive with established editing methods. For instance, it renders the curly texture of a Toy Poodle more faithfully than LEDITS++ and excels at maintaining the original pose during edits, unlike Null-Text.
+              <code>UDT</code>  was qualitatively compared against state-of-the-art unsupervised, self-supervised, and image editing methods. 
+              While competing unsupervised and self-supervised methods struggled to find adequate transformation directions for specific target dog breeds, <code>UDT</code> successfully transformed images to the intended breed. 
+              Furthermore, <code>UDT</code> demonstrated superior performance over existing editing methods in certain aspects. 
+              Specifically, it better represented the fine curly texture of a <em>Toy Poodle</em> than LEDITS++ and was more effective at maintaining the original pose during edits compared to Null-Text.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Classification Accuracy on Class Translation</h2>
+          <img src="static/images/table1.png" alt="Qualitative comparison with other methods"/>
+          <div class="content has-text-justified">
+            <p>
+              To quantitatively evaluate <code>UDT</code>'s effectiveness in capturing breed-specific characteristics, 100 learned translation directions were applied to 100 Pug images. 
+              The shifts in classification probability for these translated images were measured using a CLIP classifier, and the representative direction for each target breed was selected as the one yielding the highest CLIP score. 
+              The results confirmed <code>UDT</code>'s effectiveness, with diagonal entries in the results table showing substantial CLIP confidence boosts for the intended target breeds. 
+              For instance, a +43.24 confidence boost for the <em>'Golden Retriever'</em> transformation aligns with the ideal expectation that targeted semantic confidence should increase significantly while other semantic alterations are minimal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Class Diversity on Class Translation</h2>
+          <img src="static/images/table2.png" alt="Qualitative comparison with other methods"/>
+          <div class="content has-text-justified">
+            <p>
+              To compare the diversity of breed transformations, <code>UDT</code>' and NoiseCLR were used to generate images from 100 distinct translation directions, with a CLIP classifier predicting the resulting breed for each image. 
+              UDT achieved an average of 50.43 distinct predicted breeds, substantially outperforming NoiseCLR's average of 15.57. 
+              This result highlights <code>UDT</code>'s superior capability in discovering a richer and more diverse set of breed-specific transformation directions.
             </p>
           </div>
         </div>
